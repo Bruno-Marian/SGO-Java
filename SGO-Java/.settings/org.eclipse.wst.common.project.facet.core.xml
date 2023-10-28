@@ -3,9 +3,9 @@
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="java"/>
   <fixed facet="jst.web"/>
-  <installed facet="java" version="20"/>
   <installed facet="jst.web" version="5.0"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="jst.jaxrs" version="2.1"/>
   <installed facet="jst.web.xdoclet" version="1.2.3"/>
+  <installed facet="java" version="10"/>
 </faceted-project>
