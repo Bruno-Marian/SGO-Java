@@ -1,0 +1,76 @@
+.mainContent {
+  margin-left: 50px;
+}
+
+object {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#mySidenav a {
+  position: absolute;
+  left: -130px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 140px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  border-radius: 0 5px 5px 0;
+  margin-top: 90px;
+}
+
+#myNavbar nav {
+  color: white;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  width: 100%;
+  border-radius: 15px;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#animal {
+  top: 80px;
+  background-color: rgb(180, 213, 241);
+}
+
+#adocao {
+  top: 140px;
+  background-color: rgb(180, 213, 241);
+}
+
+#funcionario {
+  top: 200px;
+  background-color: rgb(180, 213, 241);
+}
+
+.logo {
+  width: 100px;
+}
+
+.sair {
+  width: 40px;
+  float: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.fundoLogo {
+  background-color: rgb(196, 218, 238);
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 15px;
+}
