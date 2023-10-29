@@ -35,7 +35,6 @@ public class PermissaoUsuarioController {
 				stm.setInt(7, pu.getId());
 			}
 			stm.execute();
-			System.out.println(stm.toString());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			return false;

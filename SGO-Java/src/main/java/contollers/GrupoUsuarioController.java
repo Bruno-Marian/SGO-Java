@@ -25,7 +25,6 @@ public class GrupoUsuarioController {
 				stm.setInt(3, gu.getId());
 			}
 			stm.execute();
-			System.out.println(stm.toString());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			return false;
