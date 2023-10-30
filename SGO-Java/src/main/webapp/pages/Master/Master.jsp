@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,7 @@
     <div id="myNavbar">
         <nav>
             <div class="fundoLogo">
-                <img src="<html:rewrite page='/resources/imagens/logo.png'/>" class="logo">
+                <img src="../imagens/logo.png" class="logo">
             </div>
             <img onclick="sair()" src="../imagens/sair.png" class="sair">
         </nav>
@@ -21,9 +23,9 @@
     
     <div id="mySidenav" class="sidenav">
         <div id="main" class="mainContent"></div>
-        <a onclick="setaPage('tabelaAnimal.html')" id="animal">Animal</a>
-        <a onclick="setaPage('tabelaDoacao.html')" id="adocao">AdoÁ„o</a>
-        <a onclick="setaPage('tabelaUsuario.html')" id="funcionario">Funcion·rio</a>
+        <a onclick="setaPage('TabelaAnimal.jsp')" id="animal">Animal</a>
+        <a onclick="setaPage('tabelaDoacao.html')" id="adocao">Ado√ß√£o</a>
+        <a onclick="setaPage('tabelaUsuario.html')" id="funcionario">Funcion√°rio</a>
     </div>
     <script>
         const pageConst = localStorage.getItem("page");
