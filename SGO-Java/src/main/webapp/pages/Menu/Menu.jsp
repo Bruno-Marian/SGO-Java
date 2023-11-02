@@ -28,23 +28,23 @@
 
 	<div id="mySidenav" class="sidenav">
 		<div id="main" class="mainContent"></div>
-		<a onclick="setaPage('CadastroAnimal.jsp')" id="animal">Animal</a> <a
-			onclick="setaPage('TabelaDoacao.jsp')" id="adocao">Adoção</a> <a
-			onclick="setaPage('CadastroGrupoUsuario.jsp')" id="grupoUsuario">Grupo Usuário</a> <a 
-			onclick="setaPage('CadastroGrupoPermissao.jsp')" id="grupoPermissao">Grupo Permissão</a> <a
-			onclick="setaPage('CadastroUsuario.jsp')" id="usuario">Usuário</a>
+		<a onclick="setaPage('../Animal/CadastroAnimal.jsp')" id="animal">Animal</a> 
+		<a onclick="setaPage('../Doacao/CadastroDoacao.jsp')" id="adocao">Adoção</a> 
+		<a onclick="setaPage('../Funcionario/CadastroFuncionario.jsp')" id="funcionario">Funcionário</a>
+		<a onclick="setaPage('../GrupoUsuario/CadastroGrupoUsuario.jsp')" id="grupoUsuario">Grupo Usuário</a> 
+		<a onclick="setaPage('../GrupoPermissao/CadastroGrupoPermissao.jsp')" id="grupoPermissao">Grupo Permissão</a>
 	</div>
 	<script>
 		const pageConst = localStorage.getItem("page");
 		if (pageConst == null) {
-			setaPage("TabelaAnimal.jsp")
+			setaPage("../Animal/TabelaAnimal.jsp")
 		} else {
 			setaPage(pageConst)
 		}
 
-		function setaPage(page) {
+		function setaPage(page) { 
 			localStorage.setItem("page", page)
-			document.getElementById('main').innerHTML = `<object type="text/html" data="${page}"></object>`;
+			document.getElementById('main').innerHTML = '<object type="text/html" data="' + page + '"></object>';
 		}
 
 		function sair() {
