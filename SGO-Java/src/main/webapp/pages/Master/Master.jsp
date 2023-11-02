@@ -14,7 +14,7 @@
     <div id="myNavbar">
         <nav>
             <div class="fundoLogo">
-                <img src="../imagens/logo.png" class="logo">
+                <img src="../../imagens/logo.png" class="logo">
             </div>
             <img onclick="sair()" src="../imagens/sair.png" class="sair">
         </nav>
