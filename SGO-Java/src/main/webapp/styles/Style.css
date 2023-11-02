@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27) 0%, rgba(0, 0, 0, 0.898) 100%), url('./../Imagens/socializar-gato-cachorro.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27) 0%, rgba(0, 0, 0, 0.898) 100%), url('../imagens/socializar-gato-cachorro.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -37,7 +37,7 @@ table {
     font-size: 18px;
     width: 100%;
     border: 1px solid rgb(142, 188, 228);
-    background-color: rgb(142, 188, 228);
+    background-color: rgb(255, 255, 255);
 }
 
 table th {
@@ -55,4 +55,8 @@ table td {
 tr:nth-child(even) {
     background-color: white;
     border: 1px solid white;
+}
+
+h1 {
+	
 }

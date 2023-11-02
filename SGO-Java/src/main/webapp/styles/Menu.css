@@ -2,6 +2,13 @@
   margin-left: 50px;
 }
 
+body {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27) 0%, rgba(0, 0, 0, 0.898) 100%), url('../imagens/socializar-gato-cachorro.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 object {
   position: absolute;
   width: 100%;
@@ -49,8 +56,18 @@ object {
   background-color: rgb(180, 213, 241);
 }
 
-#funcionario {
+#grupoUsuario {
   top: 200px;
+  background-color: rgb(180, 213, 241);
+}
+
+#grupoPermissao {
+  top: 290px;
+  background-color: rgb(180, 213, 241);
+}
+
+#usuario {
+  top: 380px;
   background-color: rgb(180, 213, 241);
 }
 
