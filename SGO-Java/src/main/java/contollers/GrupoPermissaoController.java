@@ -80,7 +80,7 @@ public class GrupoPermissaoController {
 
 	public static boolean excluir(int id) {
 		try {
-			PreparedStatement stm = con.prepareStatement("DELETE FROM GRUPO_USUARIO WHERE ID = ?");
+			PreparedStatement stm = con.prepareStatement("DELETE FROM GRUPO_PERMISSAO WHERE ID = ?");
 			stm.setInt(1, id);
 			stm.execute();
 		} catch (Exception e) {
