@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import models.Funcao;
 import models.Funcionario;
 import utils.Conexao;
 
@@ -22,9 +21,12 @@ public class FuncionarioController {
 				stm.setDate(3, fu.getDataNascimento());
 				stm.setInt(4, fu.getFuncao());
 			} else {
-				stm = con.prepareStatement("UPDATE FUNCAO SET NOME = ? WHERE ID = ?");
+				stm = con.prepareStatement("UPDATE FUNCIONARIO SET NOME = ?, SEXO = ?, DATA_NASCIMENTO = ?, FUNCAO = ?  WHERE ID = ?");
 				stm.setString(1, fu.getNome());
-				stm.setInt(2, fu.getId());
+				stm.setString(2, fu.getSexo());
+				stm.setDate(3, fu.getDataNascimento());
+				stm.setInt(4, fu.getFuncao());
+				stm.setInt(5, fu.getId());
 			}
 			stm.execute();
 		} catch (Exception e) {
@@ -38,7 +40,25 @@ public class FuncionarioController {
 	public static ResultSet consultar() {
 		ResultSet rs = null;
 		try {
-			PreparedStatement stm = con.prepareStatement("SELECT * FROM FUNCAO ORDER BY ID DESC");
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM FUNCIONARIO ORDER BY ID DESC");
+			rs = stm.executeQuery();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet consultarExibir() {
+		ResultSet rs = null;
+		try {
+			PreparedStatement stm = con.prepareStatement("SELECT FU.ID, FU.NOME, \r\n"
+					+ "CASE WHEN FU.SEXO = \"M\" THEN \"MASCULINO\"\r\n"
+					+ "WHEN FU.SEXO = \"F\" THEN \"FEMININO\"\r\n"
+					+ "ELSE \"OUTRO\" END AS SEXO,\r\n"
+					+ "DATE_FORMAT(FU.DATA_NASCIMENTO, \"%d/%m/%Y\") AS DATA_NASCIMENTO,\r\n"
+					+ "F.NOME AS FUNCAO\r\n"
+					+ " FROM FUNCIONARIO FU\r\n"
+					+ "JOIN FUNCAO F ON F.ID = FU.FUNCAO");
 			rs = stm.executeQuery();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -46,24 +66,24 @@ public class FuncionarioController {
 		return rs;
 	}
 
-	public static Funcao consultar(int id) {
-		Funcao f = null;
+	public static Funcionario consultar(int id) {
+		Funcionario fu = null;
 		try {
-			PreparedStatement stm = con.prepareStatement("SELECT * FROM FUNCAO WHERE ID = ?");
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM FUNCIONARIO WHERE ID = ?");
 			stm.setInt(1, id);
 			ResultSet rs = stm.executeQuery();
 			if (rs.next()) {
-				f = new Funcao(rs.getInt("ID"), rs.getString("NOME"));
+				fu = new Funcionario(rs.getInt("ID"), rs.getString("NOME"), rs.getString("SEXO"), rs.getDate("DATA_NASCIMENTO"), rs.getInt("FUNCAO"));
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return f;
+		return fu;
 	}
 
 	public static boolean excluir(int id) {
 		try {
-			PreparedStatement stm = con.prepareStatement("DELETE FROM FUNCAO WHERE ID = ?");
+			PreparedStatement stm = con.prepareStatement("DELETE FROM FUNCIONARIO WHERE ID = ?");
 			stm.setInt(1, id);
 			stm.execute();
 		} catch (Exception e) {
