@@ -3,7 +3,7 @@
 <%
 	int id = 0;
     String usuario = request.getParameter("usuario");
-    //String senha = request.getParameter("senha");
+    String senha = request.getParameter("senha");
 	int grupoUsuario = Integer.parseInt(request.getParameter("grupoUsuario"));
 	int funcionario = Integer.parseInt(request.getParameter("funcionario"));
 	String editar = request.getParameter("editar");
@@ -11,7 +11,7 @@
 		id = Integer.parseInt(request.getParameter("id"));
 	}
 
-	Usuario usu = new Usuario(id, "paloma", "111", grupoUsuario, funcionario);
+	Usuario usu = new Usuario(id, usuario, senha, grupoUsuario, funcionario);
 	
 	if(UsuarioController.salvar(usu)){
 		response.sendRedirect("ConsultarUsuario.jsp");

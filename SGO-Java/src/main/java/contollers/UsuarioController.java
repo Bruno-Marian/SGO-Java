@@ -16,10 +16,11 @@ public class UsuarioController {
 			
 			/*if (registroExistente(gp.getLogin(),gp.getSenha()) == true) {
 				return true;
+				//	System.out.println("Passei aqui");
 			}*/
 			
 			if (gp.getId() == 0) {
-				stm = con.prepareStatement("INSERT INTO USUARIO(LOGIN, SENHA, GRUPO_USUARIO, FUNCIONARIO) VALUES(?,?)");
+				stm = con.prepareStatement("INSERT INTO USUARIO(LOGIN, SENHA, GRUPO_USUARIO, FUNCIONARIO) VALUES(?,?,?,?)");
 				stm.setString(1, gp.getLogin());
 				stm.setString(2, gp.getSenha());
 				stm.setInt(3, gp.getGrupo_usuario());
@@ -35,14 +36,14 @@ public class UsuarioController {
 			}
 			stm.execute();
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println(e.getMessage());		
 			return false;
 		}
 
 		return true;
 	}
 	
-	public static boolean registroExistente(String login, String senha) 
+	public static boolean ExisteUsuarioSenha(String login, String senha) 
 	{
 		try {
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM USUARIO WHERE LOGIN = ? AND SENHA = ?");
