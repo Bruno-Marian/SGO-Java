@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="../../styles/Style.css">
 <title>Cadastro de Animal</title>
 </head>
-
 <body>
 	<form class="caixa">
 		<h3 class="mb-4">Cadastro de Animal</h3>

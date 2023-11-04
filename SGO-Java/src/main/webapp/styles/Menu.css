@@ -61,15 +61,26 @@ object {
 	background-color: rgb(180, 213, 241);
 }
 
-#grupoUsuario {
+#usuario {
 	top: 260px;
 	background-color: rgb(180, 213, 241);
 }
 
-#grupoPermissao {
-	top: 350px;
+#grupoUsuario {
+	top: 320px;
 	background-color: rgb(180, 213, 241);
 }
+
+#grupoPermissao {
+	top: 410px;
+	background-color: rgb(180, 213, 241);
+}
+
+#permissaoUsuario {
+	top: 500px;
+	background-color: rgb(180, 213, 241);
+}
+
 
 .logo {
 	width: 100px;

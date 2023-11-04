@@ -67,7 +67,7 @@ public class FuncionarioController {
 	}
 
 	public static Funcionario consultar(int id) {
-		Funcionario fu = null;
+		Funcionario fu = new Funcionario();
 		try {
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM FUNCIONARIO WHERE ID = ?");
 			stm.setInt(1, id);

@@ -48,6 +48,10 @@ public class Funcionario {
 	public void setFuncao(int funcao) {
 		this.funcao = funcao;
 	}
+	
+	public Funcionario() {
+		
+	}
 
 	public Funcionario(int id, String nome, String sexo, Date dataNascimento, int funcao) {
 		super();

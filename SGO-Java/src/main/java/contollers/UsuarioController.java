@@ -3,7 +3,6 @@ package contollers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import models.Usuario;
 import utils.Conexao;
 
@@ -58,5 +57,43 @@ public class UsuarioController {
 			return false;
 		}
 		return false;
+	}
+	
+	public static ResultSet consultar() {
+		ResultSet rs = null;
+		try {
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM USUARIO ORDER BY ID DESC");
+			rs = stm.executeQuery();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return rs;
+	}
+	
+	public static Usuario consultar(int id) {
+		Usuario us = new Usuario();
+		try {
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM USUARIO WHERE ID = ?");
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
+			if (rs.next()) {
+				us = new Usuario(rs.getInt("ID"), rs.getString("LOGIN"), rs.getString("SENHA"), rs.getInt("GRUPO_USUARIO"), rs.getInt("FUNCIONARIO"));
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return us;
+	}
+	
+	public static boolean excluir(int id) {
+		try {
+			PreparedStatement stm = con.prepareStatement("DELETE FROM USUARIO WHERE ID = ?");
+			stm.setInt(1, id);
+			stm.execute();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+		return true;
 	}
 }

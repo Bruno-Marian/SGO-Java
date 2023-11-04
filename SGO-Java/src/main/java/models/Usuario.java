@@ -38,6 +38,10 @@ public class Usuario {
 		this.funcionario = funcionario;
 	}
 	
+	public Usuario() {
+		
+	}
+	
 	public Usuario(int id, String login, String senha, int grupo_usuario, int funcionario) {
 		super();
 		this.id = id;
