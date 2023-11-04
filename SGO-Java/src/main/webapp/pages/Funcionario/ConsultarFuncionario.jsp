@@ -1,3 +1,4 @@
+<%@page import="utils.Permissoes"%>
 <%@page import="models.Funcao"%>
 <%@page import="contollers.FuncionarioController"%>
 <%@page import="contollers.FuncaoController"%>
@@ -19,7 +20,7 @@
 	<%
 	if (UsuarioController.getUsuarioIdLogado() == 0) {
 		response.sendRedirect("../Login/Login.jsp");
-	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+	} else if (!UsuarioController.temPermissao(Permissoes.APENAS_VISUALIZAR_TELAS_SOBRE_FUNCIONARIO) && !UsuarioController.temPermissao(Permissoes.TOTAL_TELAS_SOBRE_FUNCIONARIO)) {
 		response.sendRedirect("../Menu/Menu.jsp");
 	}
 	%>

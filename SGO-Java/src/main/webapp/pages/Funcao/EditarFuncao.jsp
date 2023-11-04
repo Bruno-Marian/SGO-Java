@@ -1,3 +1,4 @@
+<%@page import="utils.Permissoes"%>
 <%@page import="contollers.FuncaoController"%>
 <%@page import="models.Funcao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +16,16 @@
 </head>
 <body>
 	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao(Permissoes.TOTAL_TELAS_SOBRE_FUNCAO)) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
+	<%
 	String id = request.getParameter("id");
 	Funcao f = FuncaoController.consultar(Integer.parseInt(id));
 	%>
@@ -28,7 +39,8 @@
 				class="form-control mb-3" name="id" value="<%out.print(id);%>"
 				readonly> <label class="form-label">Informe o nome
 				da função</label> <input id="nome" type="text" class="form-control mb-3"
-				placeholder="Informe o nome da função" name="nome" value="<%out.print(f.getNome());%>">
+				placeholder="Informe o nome da função" name="nome"
+				value="<%out.print(f.getNome());%>">
 
 			<div class="m-3">
 				<button class="btn btn-outline-primary" onclick="validar()">Gravar</button>

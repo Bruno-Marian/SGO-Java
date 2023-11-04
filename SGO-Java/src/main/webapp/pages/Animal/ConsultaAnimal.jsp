@@ -1,3 +1,4 @@
+<%@page import="utils.Permissoes"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 	<%
 	if (UsuarioController.getUsuarioIdLogado() == 0) {
 		response.sendRedirect("../Login/Login.jsp");
-	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+	} else if (!UsuarioController.temPermissao(Permissoes.APENAS_VISUALIZAR_TELAS_SOBRE_ANIMAL) && !UsuarioController.temPermissao(Permissoes.TOTAL_TELAS_SOBRE_ANIMAL)) {
 		response.sendRedirect("../Menu/Menu.jsp");
 	}
 	%>

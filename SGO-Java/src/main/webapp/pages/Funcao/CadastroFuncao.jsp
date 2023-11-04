@@ -1,3 +1,4 @@
+<%@page import="utils.Permissoes"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,11 +17,21 @@
 		<h1 class="text-center">Cadastro de Funções</h1>
 	</header>
 	<nav></nav>
+	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao(Permissoes.TOTAL_TELAS_SOBRE_FUNCAO)) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
 	<main class="container m-5">
 		<form action="GravarFuncao.jsp?editar=no" method="POST">
-			<label class="form-label">Informe o nome da função</label> <input id="nome"
-				type="text" class="form-control mb-3" placeholder="Informe o nome da função"
-				name="nome"> 
+			<label class="form-label">Informe o nome da função</label> <input
+				id="nome" type="text" class="form-control mb-3"
+				placeholder="Informe o nome da função" name="nome">
 
 			<div class="m-3">
 				<button class="btn btn-outline-primary" onclick="validar()">Gravar</button>

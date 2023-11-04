@@ -1,3 +1,4 @@
+<%@page import="utils.Permissoes"%>
 <%@page import="contollers.GrupoUsuarioController"%>
 <%@page import="contollers.UsuarioController"%>
 <%@page import="contollers.FuncionarioController"%>
@@ -26,7 +27,7 @@
 	<%
 	if (UsuarioController.getUsuarioIdLogado() == 0) {
 		response.sendRedirect("../Login/Login.jsp");
-	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+	} else if (!UsuarioController.temPermissao(Permissoes.TOTAL_TELAS_SOBRE_USUARIO)) {
 		response.sendRedirect("../Menu/Menu.jsp");
 	}
 	%>
