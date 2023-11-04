@@ -49,7 +49,7 @@
 		}
 
 		function sair() {
-			window.location.href = "login.jsp";
+			window.location.href = "../Login/Login.jsp";
 			localStorage.setItem("login", null);
 		}
 	</script>
