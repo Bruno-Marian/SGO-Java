@@ -15,6 +15,16 @@
 </head>
 
 <body>
+	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
 	<form class="caixa">
 		<h3 class="mb-4">Cadastro de Adoção</h3>
 		<div class="row">

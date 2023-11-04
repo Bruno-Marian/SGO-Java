@@ -23,6 +23,16 @@
 	%>
 </div>
 <body>
+	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
 	<form class="caixa" action="GravarUsuario.jsp?editar=no" method="POST">
 		<h3 class="mb-4">Edição de Usuários</h3>
 		<div class="row">

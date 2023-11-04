@@ -28,27 +28,15 @@
 
 	<div id="mySidenav" class="sidenav">
 		<div id="main" class="mainContent"></div>
-		<a onclick="setaPage('../Animal/ConsultaAnimal.jsp')" id="animal">Animais</a> 
-		<a onclick="setaPage('../Doacao/ConsultaDoacao.jsp')" id="adocao">Adoção</a> 
-		<a onclick="setaPage('../Funcionario/ConsultarFuncionario.jsp')" id="funcionario">Funcionários</a>
-		<a onclick="setaPage('../Usuario/ConsultarUsuario.jsp')" id="usuario">Usuário</a>
-		<a onclick="setaPage('../GrupoUsuario/ConsultaGrupoUsuario.jsp')" id="grupoUsuario">Grupo Usuário</a> 
-		<a onclick="setaPage('../GrupoPermissao/ConsultarGrupoPermissao.jsp')" id="grupoPermissao">Grupo Permissão</a>
-		<a onclick="setaPage('../PermissaoUsuario/ConsultarPermissaoUsuario.jsp')" id="permissaoUsuario">Permissão Usuário</a>
+		<a href="../Animal/ConsultaAnimal.jsp" id="animal">Animais</a> 
+		<a href="../Doacao/ConsultaDoacao.jsp" id="adocao">Adoção</a> 
+		<a href="../Funcionario/ConsultarFuncionario.jsp" id="funcionario">Funcionários</a>
+		<a href="../Usuario/ConsultarUsuario.jsp" id="usuario">Usuário</a>
+		<a href="../GrupoUsuario/ConsultaGrupoUsuario.jsp" id="grupoUsuario">Grupo Usuário</a> 
+		<a href="../GrupoPermissao/ConsultarGrupoPermissao.jsp" id="grupoPermissao">Grupo Permissão</a>
+		<a href="../PermissaoUsuario/ConsultarPermissaoUsuario.jsp" id="permissaoUsuario">Permissão Usuário</a>
 	</div>
 	<script>
-		const pageConst = localStorage.getItem("page");
-		if (pageConst == null) {
-			setaPage("../Animal/TabelaAnimal.jsp")
-		} else {
-			setaPage(pageConst)
-		}
-
-		function setaPage(page) { 
-			localStorage.setItem("page", page)
-			document.getElementById('main').innerHTML = '<object type="text/html" data="' + page + '"></object>';
-		}
-
 		function sair() {
 			window.location.href = "MenuSair.jsp";
 		}

@@ -16,6 +16,16 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
 	<div class="caixa">
 		<div class="row mb-4 p-2">
 			<div class="col-md-10">

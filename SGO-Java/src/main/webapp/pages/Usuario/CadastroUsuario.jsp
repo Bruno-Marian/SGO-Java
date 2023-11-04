@@ -1,13 +1,13 @@
 <%@page import="contollers.GrupoUsuarioController"%>
 <%@page import="contollers.FuncionarioController"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Cadastro de Usuário</title>
+<title>Cadastro de UsuÃ¡rio</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -15,24 +15,34 @@
 <link rel="stylesheet" type="text/css" href="../../styles/Style.css">
 </head>
 <body>
+	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
 	<form class="caixa" action="GravarUsuario.jsp?editar=no" method="POST">
-		<h3 class="mb-4">Cadastro de Usuário</h3>
+		<h3 class="mb-4">Cadastro de UsuÃ¡rio</h3>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<label>Usuário</label> <input type="text" id="usuario"
+					<label>UsuÃ¡rio</label> <input type="text" id="usuario"
 						name="usuario" class="form-control" required>
 				</div>
 				<div class="form-group">
-					<label>Senha</label> <input type="password" id="senha"
-						name="senha" class="form-control" required>
+					<label>Senha</label> <input type="password" id="senha" name="senha"
+						class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label>Confirmar senha</label> <input type="password" id="conSenha"
 						class="form-control" required>
 				</div>
 				<div class="form-group">
-					<label>Selecione o grupo de usuários</label> <select
+					<label>Selecione o grupo de usuÃ¡rios</label> <select
 						class="form-control" name="grupoUsuario" id="grupoUsuario">
 						<%
 						ResultSet grupoUsuarios = GrupoUsuarioController.consultar();
@@ -43,7 +53,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>Selecione o funcionário</label><select class="form-control"
+					<label>Selecione o funcionÃ¡rio</label><select class="form-control"
 						name="funcionario" id="funcionario">
 						<%
 						ResultSet funcionario = FuncionarioController.consultar();
@@ -72,7 +82,7 @@
 			let selectGrupoUsuario = document.getElementById('grupoUsuario');
 			let selectFuncionario = document.getElementById('funcionario');
 			if(selectGrupoUsuario.value == '' || selectFuncionario.value == '' ){
-				alert("Necessário informar o grupo e funcionário para efetuar a liberação");
+				alert("NecessÃ¡rio informar o grupo e funcionÃ¡rio para efetuar a liberaÃ§Ã£o");
 				return
 			}
 			document.getElementsByTagName('form')[0].submit()

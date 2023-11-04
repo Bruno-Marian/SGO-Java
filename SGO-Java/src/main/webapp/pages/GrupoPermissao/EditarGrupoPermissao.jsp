@@ -18,6 +18,16 @@
 </head>
 <body>
 	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
+	<%
 	String id = request.getParameter("id");
 	GrupoPermissao gp = GrupoPermissaoController.consultar(Integer.parseInt(id));
 	%>

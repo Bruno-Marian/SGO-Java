@@ -20,6 +20,16 @@
 
 <body>
 	<%
+	if (UsuarioController.getUsuarioIdLogado() == 0) {
+		response.sendRedirect("../Login/Login.jsp");
+	} else if (!UsuarioController.temPermissao("VISUALIZAR TABELA PERMISSAO USUARIO")) {
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+	%>
+	<nav>
+		<%@ include file="../Menu/Menu.jsp"%>
+	</nav>
+	<%
 	String id = request.getParameter("id");
 	Funcionario fu = FuncionarioController.consultar(Integer.parseInt(id));
 	%>
@@ -41,12 +51,13 @@
 				<div class="form-group">
 					<label>Informe a Data Nascimento</label> <input type="date"
 						id="dataNascimento" class="form-control" name="dataNascimento"
-						value='<%out.print(fu.getDataNascimento());%>' pattern="yyyy-mm-dd" required>
+						value='<%out.print(fu.getDataNascimento());%>'
+						pattern="yyyy-mm-dd" required>
 				</div>
 				<div class="form-group">
 					<label>Informe a função</label> <select id="funcao"
 						class="form-control" name="funcao" required>
-						<%		
+						<%
 						ResultSet funcao = FuncaoController.consultar();
 						while (funcao.next()) {
 							if (funcao.getInt("ID") == fu.getFuncao()) {
@@ -62,21 +73,21 @@
 					<label>Informe o sexo</label> <select id="sexo"
 						class="form-control" name="sexo" required>
 						<%
-							if (fu.getSexo().equals("M")){
-								out.print("<option selected value='M'>Masculino</option>");
-							}else{
-								out.print("<option value='M'>Masculino</option>");
-							}
-							if (fu.getSexo().equals("F")){
-								out.print("<option selected value='F'>Feminino</option>");
-							}else{
-								out.print("<option value='F'>Feminino</option>");
-							}
-							if (fu.getSexo().equals("O")){
-								out.print("<option selected value='O'>Outros</option>");
-							}else{
-								out.print("<option value='O'>Outros</option>");
-							}
+						if (fu.getSexo().equals("M")) {
+							out.print("<option selected value='M'>Masculino</option>");
+						} else {
+							out.print("<option value='M'>Masculino</option>");
+						}
+						if (fu.getSexo().equals("F")) {
+							out.print("<option selected value='F'>Feminino</option>");
+						} else {
+							out.print("<option value='F'>Feminino</option>");
+						}
+						if (fu.getSexo().equals("O")) {
+							out.print("<option selected value='O'>Outros</option>");
+						} else {
+							out.print("<option value='O'>Outros</option>");
+						}
 						%>
 					</select>
 				</div>
