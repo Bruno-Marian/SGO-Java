@@ -29,7 +29,10 @@
 		<div id="box"></div>
 	</div>
 	<script>
-		document.getElementById("box").innerHTML = retornaTableDoacao();
+		function cadastraClick() {
+			let page = "CadastroDoacao.jsp";
+			document.body.innerHTML = '<object type="text/html" data="' + page + '"></object>';
+		}
 	</script>
 </body>
 

@@ -11,7 +11,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="../../styles/Style.css">
-<script src="./../controllers/listAnimal.js"></script>
 <title>Animais</title>
 </head>
 
@@ -26,15 +25,11 @@
 					onclick="cadastraClick()">Cadastrar</button>
 			</div>
 		</div>
-		<div id="box"></div>
 	</div>
-
 	<script>
-		listAnimal()
-
-		function listAnimal() {
-			//Retorna nova informação salva na memória
-			document.getElementById("box").innerHTML = retornaTableAnimal();
+		function cadastraClick() {
+			let page = "CadastroAnimal.jsp";
+			document.body.innerHTML = '<object type="text/html" data="' + page + '"></object>';
 		}
 	</script>
 </body>

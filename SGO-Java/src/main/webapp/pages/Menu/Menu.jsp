@@ -28,11 +28,11 @@
 
 	<div id="mySidenav" class="sidenav">
 		<div id="main" class="mainContent"></div>
-		<a onclick="setaPage('../Animal/CadastroAnimal.jsp')" id="animal">Animal</a> 
-		<a onclick="setaPage('../Doacao/CadastroDoacao.jsp')" id="adocao">Adoção</a> 
-		<a onclick="setaPage('../Funcionario/CadastroFuncionario.jsp')" id="funcionario">Funcionário</a>
-		<a onclick="setaPage('../GrupoUsuario/CadastroGrupoUsuario.jsp')" id="grupoUsuario">Grupo Usuário</a> 
-		<a onclick="setaPage('../GrupoPermissao/CadastroGrupoPermissao.jsp')" id="grupoPermissao">Grupo Permissão</a>
+		<a onclick="setaPage('../Animal/ConsultaAnimal.jsp')" id="animal">Animais</a> 
+		<a onclick="setaPage('../Doacao/ConsultaDoacao.jsp')" id="adocao">Adoção</a> 
+		<a onclick="setaPage('../Funcionario/ConsultarFuncionario.jsp')" id="funcionario">Funcionários</a>
+		<a onclick="setaPage('../GrupoUsuario/ConsultaGrupoUsuario.jsp')" id="grupoUsuario">Grupo Usuário</a> 
+		<a onclick="setaPage('../GrupoPermissao/ConsultarGrupoPermissao.jsp')" id="grupoPermissao">Grupo Permissão</a>
 	</div>
 	<script>
 		const pageConst = localStorage.getItem("page");

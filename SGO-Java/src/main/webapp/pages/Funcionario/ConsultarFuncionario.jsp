@@ -9,26 +9,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Consultar Funcionario</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+<link rel="stylesheet" type="text/css" href="../../styles/Style.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 </head>
 <body>
-	<header class="mt-4">
-		<h1 class="text-center">Consultar Funcionario</h1>
-	</header>
-	<nav></nav>
-	<main class="p-4">
+	<div class="caixa">
+		<div class="row mb-4 p-2">
+			<div class="col-md-10">
+				<h3>Funcionários</h3>
+			</div>
+			<div class="col-md-2">
+				<button class="btn btn-success float-right"
+					onclick="cadastraClick()">Cadastrar</button>
+			</div>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Id</th>
 					<th>Nome</th>
 					<th>Data Nascimento</th>
-					<th>Funcão</th>
-					<th>Sexo</th>
+					<th>Função</th>
+					<th>Gênero</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,6 +54,12 @@
 				%>
 			</tbody>
 		</table>
-	</main>
+	</div>
+	<script>
+		function cadastraClick() {
+			let page = "CadastroFuncionario.jsp";
+			document.body.innerHTML = '<object type="text/html" data="' + page + '"></object>';
+		}
+	</script>
 </body>
 </html>
