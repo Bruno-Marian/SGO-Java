@@ -38,7 +38,7 @@
 	</div>
 	<script>
 		function sair() {
-			window.location.href = "MenuSair.jsp";
+			window.location.href = "../Menu/MenuSair.jsp";
 		}
 	</script>
 </body>
