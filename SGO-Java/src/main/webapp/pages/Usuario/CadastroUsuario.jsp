@@ -25,7 +25,7 @@
 				</div>
 				<div class="form-group">
 					<label>Senha</label> <input type="password" id="senha"
-						class="form-control" required>
+						name="senha" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label>Confirmar senha</label> <input type="password" id="conSenha"

@@ -1,3 +1,4 @@
+<%@page import="contollers.UsuarioController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,15 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<%
+	if (UsuarioController.getUsuarioIdLogado() == 0){
+		response.sendRedirect("../Login/Login.jsp");
+	}
+	else if (!UsuarioController.temPermissao("TOTAL TABELA GRUPO USUARIO")){
+		response.sendRedirect("../Menu/Menu.jsp");
+	}
+
+%>
 	<form class="caixa" action="GravarGrupoUsuario.jsp?editar=no" method="POST">
 		<h3 class="mb-4">Cadastro de Grupo de Usuários</h3>
 		<div class="row">

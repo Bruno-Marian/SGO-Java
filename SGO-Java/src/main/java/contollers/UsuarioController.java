@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import models.Usuario;
 import utils.Conexao;
+import utils.Machine;
 
 public class UsuarioController {
 	private static Connection con = Conexao.getConexao();
@@ -50,6 +51,10 @@ public class UsuarioController {
 			stm.setString(2, senha);
 			ResultSet rs = stm.executeQuery();
 			if (rs.next()) {
+				int usuarioId = rs.getInt("ID");
+				if (usuarioId > 0) {
+					login(usuarioId);
+				}
 				return true;
 			}
 		}catch (Exception e) {
@@ -91,6 +96,78 @@ public class UsuarioController {
 			stm.setInt(1, id);
 			stm.execute();
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean temPermissao(String permisssao) {
+		try {
+			int usuario = getUsuarioIdLogado();
+			if (usuario == 0) {
+				return false;
+			}
+			
+			PreparedStatement stm = con.prepareStatement("SELECT PU.*\r\n"
+					+ "FROM USUARIO U\r\n"
+					+ "JOIN GRUPO_USUARIO GU ON GU.ID = U.GRUPO_USUARIO\r\n"
+					+ "JOIN GRUPO_PERMISSAO GP ON GP.GRUPO_USUARIO = GU.ID\r\n"
+					+ "JOIN PERMISSAO_USUARIO PU ON PU.ID = GP.PERMISSAO_USUARIO\r\n"
+					+ "WHERE PU.PERMISSAO = ?\r\n"
+					+ "  AND U.ID = ?");
+			stm.setString(1, permisssao);
+			stm.setInt(2, usuario);
+			ResultSet rs = stm.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+			
+		}catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	public static int getUsuarioIdLogado() {
+		int usuarioId = 0;
+		try {
+			var machineAddress = Machine.GetMacAddress();
+			PreparedStatement stm = con.prepareStatement("SELECT USUARIO_ID FROM USUARIO_LOGADO WHERE MAC_ADDRESS = ?");
+			stm.setString(1, machineAddress);
+			ResultSet rs = stm.executeQuery();
+			if (rs.next()) {
+				usuarioId = rs.getInt("USUARIO_ID");
+			}
+		}catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return usuarioId;
+	}
+	
+	public static boolean logout() {
+		try {
+			var machineAddress = Machine.GetMacAddress();
+			PreparedStatement stm = con.prepareStatement("DELETE FROM USUARIO_LOGADO WHERE MAC_ADDRESS = ?");
+			stm.setString(1, machineAddress);
+			stm.execute();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean login(int usuarioId) {
+		try {
+			var machineAddress = Machine.GetMacAddress();
+			PreparedStatement stm = con.prepareStatement("INSERT INTO USUARIO_LOGADO(USUARIO_ID, MAC_ADDRESS) VALUES(?,?)");
+			stm.setInt(1, usuarioId);
+			stm.setString(2, machineAddress);
+			stm.execute();
+		}catch (Exception e) {
 			System.err.println(e.getMessage());
 			return false;
 		}

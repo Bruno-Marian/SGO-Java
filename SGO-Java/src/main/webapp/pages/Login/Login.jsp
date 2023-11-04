@@ -1,3 +1,4 @@
+<%@page import="contollers.UsuarioController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -41,6 +42,7 @@ function logar(){
 	  alert("Necessário informar o usuário e senha para efetuar a liberação");
 	return
 	}
+	
 	  document.getElementsByTagName('form')[0].submit()
 	}
 </script>

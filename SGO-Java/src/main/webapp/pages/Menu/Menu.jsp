@@ -1,3 +1,4 @@
+<%@page import="contollers.UsuarioController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -49,8 +50,7 @@
 		}
 
 		function sair() {
-			window.location.href = "../Login/Login.jsp";
-			localStorage.setItem("login", null);
+			window.location.href = "MenuSair.jsp";
 		}
 	</script>
 </body>
